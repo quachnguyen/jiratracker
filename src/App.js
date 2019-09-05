@@ -60,7 +60,7 @@ const onClick = () => {
         };*/
 
         //axios.get('https://57a6ba45.ngrok.io/api/TimeSheetManagement/get-text', { crossdomain: true }).then(function (response) { console.log(response.data); })
-        axios.post('https://quach.atlassian.net/rest/api/2/issue/SP-1/worklog', jiraData, {
+        axios.post('https://cors-anywhere.herokuapp.com/https://quach.atlassian.net/rest/api/2/issue/SP-1/worklog', jiraData, {
             headers: {
                 'Authorization': 'Basic aHVuZy5uZ3V5ZW5xdW9jLjcxNDA0OTc2QGdtYWlsLmNvbTpNcFFieHlRT2VjdVpkT2tPQjFPMTMxNzM=',
 				'Content-Type' : 'application/json'
