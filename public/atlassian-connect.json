@@ -1,0 +1,46 @@
+{
+  "name": "SimpleApp",
+  "description": "Atlassian Connect app",
+  "key": "com.issuecontent.myapp",
+  "baseUrl": "https://83a6d957.ngrok.io/",
+  "vendor": {
+    "name": "QuachNHN, Inc.",
+    "url": "http://success-ss.com.vn"
+  },
+  "authentication": {
+    "type": "none"
+  },
+  "apiVersion": 2,
+  "modules": {
+    "webItems": [
+      {
+        "location": "jira.issue.tools",
+        "weight": 200,
+        "url": "public/index.html",
+        "context": "addon",
+        "target": {
+          "type": "dialog",
+          "options": {
+            "chrome": false,
+            "height": "450px",
+            "width": "450px"
+          }
+        },
+        "tooltip": {
+          "value": "Example tooltip"
+        },
+        "icon": {
+          "width": 16,
+          "height": 16,
+          "url": "/maps/icon.png"
+        },
+        "name": {
+          "value": "Custom Log Work Item"
+        },
+        "key": "web-item-content-issue"
+      }
+    ]
+  },
+  "enableLicensing": false,
+  "scopes": [ "READ", "WRITE" ]
+}
