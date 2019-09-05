@@ -30,8 +30,8 @@ const onClick = () => {
     try {
         var jiraData = {
             "timeSpentSeconds": 2400,
-            "comment": "Are you crazy!!!",
-            "started": "2019-08-28T12:05:00.317+0000"
+            "comment": "My frist worklog",
+            "started": "2019-09-03T12:05:00.317+0000"
         }
 
         /*var config = {
@@ -60,10 +60,13 @@ const onClick = () => {
         };*/
 
         //axios.get('https://57a6ba45.ngrok.io/api/TimeSheetManagement/get-text', { crossdomain: true }).then(function (response) { console.log(response.data); })
+		
         axios.post('https://cors-anywhere.herokuapp.com/https://quach.atlassian.net/rest/api/2/issue/SP-1/worklog', jiraData, {
             headers: {
                 'Authorization': 'Basic aHVuZy5uZ3V5ZW5xdW9jLjcxNDA0OTc2QGdtYWlsLmNvbTpNcFFieHlRT2VjdVpkT2tPQjFPMTMxNzM=',
-				'Content-Type' : 'application/json'
+				'Content-Type' : 'application/json',
+				'Accept': 'application/json',
+				'User-Agent'	: 'test'
             },
         }).then(res => {
             console.log('res', res);
