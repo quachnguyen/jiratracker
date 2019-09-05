@@ -65,7 +65,7 @@ const onClick = () => {
             headers: {
 				'X-Atlassian-Token'					: 'nocheck',
                 'Access-Control-Allow-Origin'		: 'https://jiratracker.herokuapp.com',
-				'Authorization': 'Basic aHVuZy5uZ3V5ZW5xdW9jLjcxNDA0OTc2QGdtYWlsLmNvbTpNcFFieHlRT2VjdVpkT2tPQjFPMTMxNzM=',
+				'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik16bERNemsxTVRoRlFVRTJRa0ZGT0VGRk9URkJOREJDTVRRek5EZzJSRVpDT1VKRFJrVXdNZyJ9.eyJodHRwczovL2F0bGFzc2lhbi5jb20vb2F1dGhDbGllbnRJZCI6IkdQTXk0VVdJYVc1V2Y2WjRoUUZPbE9LblUwMDFIU2g2IiwiaHR0cHM6Ly9hdGxhc3NpYW4uY29tL2VtYWlsRG9tYWluIjoiZ21haWwuY29tIiwiaHR0cHM6Ly9hdGxhc3NpYW4uY29tL3N5c3RlbUFjY291bnRJZCI6IjVkNjc1MTMyOWViMzMwMGMwZjZmNjA5ZCIsImh0dHBzOi8vYXRsYXNzaWFuLmNvbS9zeXN0ZW1BY2NvdW50RW1haWxEb21haW4iOiJjb25uZWN0LmF0bGFzc2lhbi5jb20iLCJodHRwczovL2F0bGFzc2lhbi5jb20vZmlyc3RQYXJ0eSI6ZmFsc2UsImlzcyI6Imh0dHBzOi8vYXRsYXNzaWFuLWFjY291bnQtcHJvZC5wdXMyLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZDY1ZjU0N2Y4MWYyYzBkOTllZThmYmEiLCJhdWQiOiJhcGkuYXRsYXNzaWFuLmNvbSIsImlhdCI6MTU2NzY4MDQwOSwiZXhwIjoxNTY3Njg0MDA5LCJhenAiOiJHUE15NFVXSWFXNVdmNlo0aFFGT2xPS25VMDAxSFNoNiIsInNjb3BlIjoicmVhZDpqaXJhLXVzZXIifQ.nY2ZNLNK5SsdeEZG4f7P32vgGyAD4SUormb8poSfHat53COq3YmI_Ar3UjElI_67spvimfZyqypWhlmPhZJ3zMRZYrN6cDyfi4GYdkZLDYO6OKwLkmcgK7IB5JjY_88dS7SXjRSwuiKRokc26onVtBXpZA_OQca6ruLnjeLrMO91g1dcyx4VPz82Mb4bAY8WStYQ6HnXQibQlnDFatuB-9MviXkkbNqFL0mA1CzCXHB7aM_S27Xj4P0elqZJSpMLCYRC3RSQedpQCwGkQWox_SYdPKB98AcU9wk1sBW1acFOGu9GQc-Q2noVkljeOXXkBygzEzrPqtgyxc_pS1NWrA=',
 				'Content-Type' : 'application/json',
 				'Accept'		: 'application/json'				
             },
