@@ -66,7 +66,7 @@ const onClick = () => {
                 'Authorization': 'Basic aHVuZy5uZ3V5ZW5xdW9jLjcxNDA0OTc2QGdtYWlsLmNvbTpNcFFieHlRT2VjdVpkT2tPQjFPMTMxNzM=',
 				'Content-Type' : 'application/json',
 				'Accept'		: 'application/json',
-				'Origin'		: 'https://jiratracker.herokuapp.com'
+				'Access-Control-Allow-Origin'		: 'https://jiratracker.herokuapp.com'
             },
         }).then(res => {
             console.log('res', res);
