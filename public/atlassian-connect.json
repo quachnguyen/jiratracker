@@ -1,8 +1,8 @@
 {
-  "name": "SimpleApp",
+  "name": "Jira Tracker",
   "description": "Atlassian Connect app",
   "key": "com.issuecontent.myapp",
-  "baseUrl": "https://83a6d957.ngrok.io/",
+  "baseUrl": "https://jiratracker.herokuapp.com/",
   "vendor": {
     "name": "QuachNHN, Inc.",
     "url": "http://success-ss.com.vn"
@@ -27,7 +27,7 @@
           }
         },
         "tooltip": {
-          "value": "Example tooltip"
+          "value": "Jira Tracker"
         },
         "icon": {
           "width": 16,
@@ -35,7 +35,7 @@
           "url": "/maps/icon.png"
         },
         "name": {
-          "value": "Custom Log Work Item"
+          "value": "Log Work"
         },
         "key": "web-item-content-issue"
       }
