@@ -13,7 +13,7 @@ import { tryCatch } from 'rxjs/internal/util/tryCatch';
 var date = new Date();
 var timespent = 0
 var workdescription = '';
-var baseUrl = 'https://quachnhn.atlassian.net';
+var baseUrl = 'https://quach.atlassian.net';
 const getDateTime = value => {
     date = value;
 };
@@ -60,9 +60,9 @@ const onClick = () => {
         };*/
 
         //axios.get('https://57a6ba45.ngrok.io/api/TimeSheetManagement/get-text', { crossdomain: true }).then(function (response) { console.log(response.data); })
-        axios.post('https://corsBypassURL.com/https://quach.atlassian.net/rest/api/2/issue/SP-1/worklog', jiraData, {
+        axios.post('https://quach.atlassian.net/rest/api/2/issue/SP-1/worklog', jiraData, {
             headers: {
-                'Authorization': 'Basic aHVuZy5uZ3V5ZW5xdW9jLjcxNDA0OTc2QGdtYWlsLmNvbTphTDVrMkh6dzY0VGo4VVZuZUx1ekUwNzE=',
+                'Authorization': 'Basic aHVuZy5uZ3V5ZW5xdW9jLjcxNDA0OTc2QGdtYWlsLmNvbTpNcFFieHlRT2VjdVpkT2tPQjFPMTMxNzM=',
 				'Content-Type' : 'application/json'
             },
         }).then(res => {
