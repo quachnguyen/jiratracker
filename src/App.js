@@ -63,10 +63,11 @@ const onClick = () => {
 		
         axios.post('https://cors-anywhere.herokuapp.com/https://quach.atlassian.net/rest/api/2/issue/SP-1/worklog', jiraData, {
             headers: {
-                'Authorization': 'Basic aHVuZy5uZ3V5ZW5xdW9jLjcxNDA0OTc2QGdtYWlsLmNvbTpNcFFieHlRT2VjdVpkT2tPQjFPMTMxNzM=',
+				'X-Atlassian-Token'					: 'nocheck',
+                'Access-Control-Allow-Origin'		: 'https://jiratracker.herokuapp.com',
+				'Authorization': 'Basic aHVuZy5uZ3V5ZW5xdW9jLjcxNDA0OTc2QGdtYWlsLmNvbTpNcFFieHlRT2VjdVpkT2tPQjFPMTMxNzM=',
 				'Content-Type' : 'application/json',
-				'Accept'		: 'application/json',
-				'Access-Control-Allow-Origin'		: 'https://jiratracker.herokuapp.com'
+				'Accept'		: 'application/json'				
             },
         }).then(res => {
             console.log('res', res);
