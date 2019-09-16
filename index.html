@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en" style="width:360px;height:315px">
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <!--
+        manifest.json provides metadata used when your web app is installed on a
+        user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+      -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+        Notice the use of %PUBLIC_URL% in the tags above.
+        It will be replaced with the URL of the `public` folder during the build.
+        Only files inside the `public` folder can be referenced from the HTML.
+
+        Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+        work correctly both with client-side routing and a non-root public URL.
+        Learn how to configure a non-root public URL by running `npm run build`.
+      -->
+    <title>Log work</title>
+    <link rel="stylesheet" href="node_modules/@atlaskit/css-reset/dist/bundle.css" />
+    <link rel="stylesheet" href="node_modules/@atlaskit/reduced-ui-pack/dist/bundle.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="node_modules/moment/min/moment.min.js" type="text/javascript"></script>
+    <script src="https://connect-cdn.atl-paas.net/all.js" type="text/javascript"></script>
+    <!--date picker-->
+    <link rel="stylesheet" href="css/tail.datetime.css">
+    <script src="js/tail.datetime.js"></script>
+    <link rel="stylesheet" href="css/tail.datetime-default-blue.css">
+    <script src="langs/tail.datetime-de.js"></script>
+    <script src="langs/tail.datetime-es.js"></script>
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <form style="padding-left:15px;">
+        <h1>Time Tracking</h1>
+        <div class="ak-field-group">
+            <label htmlFor="timespent">Time Spent</label>
+            <input type="text" class="ak-field-text ak-field__width-large" id="timespent" name="timespent" placeholder="eg. 2h, 2d, 1w"
+                   required />
+        </div>
+        <div class="ak-field-group">
+            <label htmlFor="datetime-local">Start date</label>
+            <div id="datetime-demo-holder" class="datetime-folder"></div>
+            <input type="text" id="datetimelocal" class="ak-field-datetime-local ak-field__width-large" />
+        </div>
+
+        <!-- selection type -->
+        <div class="ak-field-group">
+            <label htmlFor="fav-fruit">Work Breakdown</label>
+            <select class="ak-field-select ak-field__width-large" id="fav-fruit"
+                    name="fav-fruit" defaultValue="PM-Perform Project Planning">
+                <optgroup label="Perform Project Management">
+                    <option>PM-Perform Project Planning</option>
+                    <option>PM-Monitor & Control according to Plans</option>
+                    <option>PM-Review Project Plans</option>
+                    <option>PM-Execute Transition Stage</option>
+                    <option>PM-Close Project</option>
+                </optgroup>
+                <optgroup label="Perform Configuration Management">
+                    <option>CM-Define Configuration Management Plan</option>
+                    <option>CM-Create Project Environment</option>
+                    <option>CM-Monitor/Control and Report Configuration Status</option>
+                </optgroup>
+
+                <optgroup label="Perform Quality Assurance">
+                    <option>QA-Plan QA task</option>
+                    <option>QA-Conduct Audit</option>
+                    <option>QA-Track NC</option>
+                    <option>QA-Report to Stakeholders</option>
+                </optgroup>
+
+                <optgroup label="Perform Decision Analysis and Resolution">
+                    <option>CAR-Perform Decision Analysis and Resolution</option>
+                </optgroup>
+
+                <optgroup label="Perform Causal Analysis and Resolution">
+                    <option>CAR-Perform Causal Analysis and Resolution</option>
+                </optgroup>
+
+                <optgroup label="Attend Training">
+                    <option>TR-Attend Training</option>
+                </optgroup>
+
+                <optgroup label="Perform Requirement Development and Management">
+                    <option>RE-Develop Requirement</option>
+                    <option>RE-Manage Requirement</option>
+                    <option>RE-Review Requirement</option>
+                </optgroup>
+
+                <optgroup label="Perform Analysis and Design">
+                    <option>AD-Perform Analysis and Design</option>
+                    <option>AD-Review Technical Design</option>
+                </optgroup>
+
+                <optgroup label="Implementation and Deployment">
+                    <option>IM-Implement Features</option>
+                    <option>IM-Perform Unit Test</option>
+                    <option>IM-Review Code</option>
+                    <option>IM-Deploy Work products</option>
+                    <option>IM-Fix Defect</option>
+                </optgroup>
+
+                <optgroup label="Perform Testing">
+                    <option>TE-Define Test Plan</option>
+                    <option>TE-Design Test Cases</option>
+                    <option>TE-Review Test Cases</option>
+                    <option>TE-Perform Testing</option>                    
+                </optgroup>
+            </select>
+        </div>
+
+        <div class="ak-field-group">
+            <label htmlFor="description">Description</label>
+            <textarea class="ak-field-textarea ak-field__width-large" name="description" id="description" cols="12" rows="6"></textarea>
+        </div>
+
+        <div class="ak-field-group">
+            <button id="btnSubmit" class="ak-button ak-button__appearance-primary">
+                Submit
+            </button>
+            <button id="btnCancel" type="button" class="ak-button ak-button__appearance-link">
+                Cancel
+            </button>
+        </div>
+
+    </form>
+    <script>
+        $(function () {
+            tail.DateTime("#datetimelocal");
+            var token = '';
+            var type_token = 'Bearer ';
+            var baseUrl = 'https://jiratracker.azurewebsites.net/';
+            AP.user.getCurrentUser(function (user) {
+                userId = user.atlassianAccountId;
+                var getTokenApiUrl = baseUrl + '/api/JiraOAuth/token/' + userId;
+                $.ajax({
+                    type: 'GET',
+                    contentType: 'application/json',
+                    url: getTokenApiUrl,
+                    success: function (data) {
+                        token = type_token + data.access_token;
+                    },
+                    error: function (data, status, error) {
+                        console.log('error', data, status, error);
+                        AP.dialog.close({ submit: true });
+                    }
+                });
+            });
+            AP.context.getContext(function (response) {
+                issueId = response.jira.issue.id;
+            });
+
+            $('#btnSubmit').click(function () {
+                var isValid = true;
+                var timeSpent = $('#timespent').val();
+                if (timeSpent == '') {
+                    isValid = false;
+                    return;
+                }
+                //disable button
+                $('#btnSubmit').attr('disabled', 'disabled');
+                //
+                var workBreakDown = $('#fav-fruit').val();
+                var dateTimeLocal = $('#datetimelocal').val();
+                if (dateTimeLocal == '')
+                    dateTimeLocal = moment();
+                var startedDate = moment(dateTimeLocal).toISOString(true).replace('+07:00', '+0700');
+
+                var description = $('#description').val();
+                var createWorkLog = baseUrl + '/api/Issue/' + issueId + '/worklog';
+
+                var worklogData = {
+                    timeSpent: timeSpent,
+                    comment: '[' + workBreakDown + '] - ' + description,
+                    started: startedDate
+                };
+                if (isValid) {
+                    $.ajax({
+                        type: 'POST',
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        cache: false,
+                        data: JSON.stringify(worklogData),
+                        url: createWorkLog,
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader('Authorization', token);
+                        },
+                        success: function () {
+                            AP.dialog.close({ submit: true });
+                        },
+                        error: function (data, status, error) {
+                            if (data.status == '401') {
+                                AP.events.emit('dialog.submit');
+                            }
+                            console.log('error', data, status, error);
+                        }
+                    });
+                }
+                return false;
+            });
+
+            $('#btnCancel').click(function () {
+                AP.dialog.close({ submit: false });
+            });
+        });
+            /*AP.dialog.disableCloseOnSubmit();*/
+        /*AP.events.on('dialog.submit', function () {
+            retire submit event
+        })*/
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "key": "success.software.services.timesheet.plugin",
+  "name": "Success Software Services Timesheet Plugin",
+  "description": "A JIRA add-on that tracking worklog",
+  "vendor": {
+    "name": "Tuan Cao",
+    "url": "http://successsoftware.global"
+  },
+  "baseUrl": "https://jiratracker.herokuapp.com",
+  "lifecycle": {
+    "installed": "https://jiratracker.azurewebsites.net/lifecycle",
+    "enabled": "https://jiratracker.azurewebsites.net/lifecycle",
+    "disabled": "https://jiratracker.azurewebsites.net/lifecycle",
+    "uninstalled": "https://jiratracker.azurewebsites.net/lifecycle"
+  },
+  "authentication": {
+    "type": "JWT"
+  },
+  "scopes": [
+    "ACT_AS_USER",
+    "READ",
+    "WRITE"
+  ],
+  "modules": {
+    "webItems": [
+      {
+        "location": "jira.issue.tools",
+        "weight": 200,
+        "url": "/index.html",
+        "context": "addon",
+        "target": {
+          "type": "dialog",
+          "options": {
+            "chrome": false,
+            "height": "510px",
+            "width": "435px"
+          }
+        },
+        "tooltip": {
+          "value": "Jira Tracker"
+        },
+        "name": {
+          "value": "My Work Log"
+        },
+        "key": "web-item-content-issue",
+        "conditions": [
+          {
+            "condition": "user_is_logged_in"
+          }
+        ]
+      }
+    ]
+  },
+  "enableLicensing": false,
+  "apiMigrations": {
+    "gdpr": true
+  }
+}

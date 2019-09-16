@@ -1,45 +1,19 @@
 {
-  "name": "mylogwork",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@atlaskit/css-reset": "^5.0.5",
-    "@atlaskit/datetime-picker": "^8.0.11",
-    "@atlaskit/dropdown-menu": "^8.0.11",
-    "@atlaskit/editor-core": "112.40.1",
-    "@atlaskit/media-core": "^30.0.8",
-    "@atlaskit/textfield": "^2.0.4",
-    "@types/styled-components": "^3.0.2",
-    "axios": "^0.19.0",
-    "jquery": "^3.4.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-intl": "^2.9.0",
-    "react-scripts": "3.0.1",
-    "request": "^2.88.0",
-    "rxjs-compat": "^6.5.2",
-    "styled-components": "^3.0.0",
-    "uuid": "^3.3.2"
-  },
+  "name": "atlaskit-reduced-ui-pack-example",
+  "version": "1.0.0",
+  "description": "A simple usage of reduced-ui-pack in just html, to show how to use this outside react",
+  "main": "index.html",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "@atlaskit/css-reset": "5.0.8",
+    "@atlaskit/reduced-ui-pack": "12.0.6",
+    "moment": "^2.24.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3"
+  },
+  "keywords": []
 }
